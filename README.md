@@ -1,155 +1,154 @@
-# Diabetes Health Indicators Dataset
+# Diabetes Prediction Using Health Indicators
 
 ### BIFX-546: Machine Learning for Bioinformatics — Spring 2026
 
-**Team Members:** - Duong Nguyen (dtn2\@hood.edu)
+**Student:**  
+Duong Nguyen (dtn2@hood.edu)
 
-------------------------------------------------------------------------
+---
 
-## 🎯 Project Goal
+# 🎯 Project Goal
 
-The project aims to develop an interpretable predictive model for diabetes status and to identify key risk factors associated with diabetes. The results are expected to provide insight into which variables contribute most to diabetes risk and how different health indicators relate to one another.
+The goal of this project is to develop interpretable machine learning models for predicting diabetes status using health indicator data from the CDC Behavioral Risk Factor Surveillance System (BRFSS). The project also aims to identify the strongest risk factors associated with diabetes and evaluate how different preprocessing and imbalance-handling techniques affect predictive performance.
 
-------------------------------------------------------------------------
+---
 
-## 📊 Dataset
+# 📊 Dataset
 
 | Field | Details |
-|------------------------------------|------------------------------------|
+|---|---|
 | **Name** | Diabetes Health Indicators Dataset |
-| **Source** | Kaggle , CDC |
-| **URL** | <https://www.kaggle.com/datasets/alexteboul/diabetes-health-indicators-dataset> |
-| **Size** | 253,680 responses contains 21 feature variables |
-| **Citation** |  |
+| **Source** | Kaggle / CDC BRFSS 2015 |
+| **URL** | https://www.kaggle.com/datasets/alexteboul/diabetes-health-indicators-dataset |
+| **Size** | 253,680 observations with 21 feature variables |
+| **Target Variable** | `Diabetes_binary` (0 = No Diabetes, 1 = Diabetes/Prediabetes) |
 
-The dataset contains 21 feature variables related to lifestyle, clinical indicators, and demographics, along with a binary target variable where 0 indicates no diabetes and 1 indicates diabetes or prediabetes.
+The dataset contains demographic, lifestyle, and clinical health indicators related to diabetes risk.
 
-------------------------------------------------------------------------
+---
 
-## 🧠 Techniques Used
+# 🧠 Techniques Used
 
-| Phase | Technique | Course Week |
-|------------------------|------------------------|------------------------|
-| EDA | Descriptive statistics (mean, median, std, IQR) | Week 5 |
-| EDA | Distribution plots, correlation heatmap, bar charts | Week 3 |
-| Analysis | Chi-square test of independence (readmission vs. diagnosis group) | Week 6 |
-| Analysis | Bootstrap confidence intervals on readmission rate | Week 6 |
-| Modeling | Logistic Regression with train/test split (80/20) | Week 10 |
-| Modeling | Decision Tree for feature importance comparison | Week 11 |
-| Evaluation | Accuracy, Precision, Recall, AUC-ROC | Week 10–11 |
+| Phase | Technique |
+|---|---|
+| EDA | Summary statistics and class distribution analysis |
+| EDA | Histograms, boxplots, countplots, correlation heatmap |
+| Data Cleaning | Duplicate removal |
+| Data Cleaning | BMI outlier removal using IQR |
+| Modeling | Logistic Regression |
+| Modeling | Random Forest |
+| Imbalance Handling | Class weighting |
+| Imbalance Handling | SMOTE oversampling |
+| Imbalance Handling | Random undersampling |
+| Feature Selection | Reduced-feature logistic regression |
+| Evaluation | Accuracy, Precision, Recall, F1-score |
+| Evaluation | ROC-AUC, PR-AUC, Confusion Matrix |
 
-------------------------------------------------------------------------
+---
 
-## 📁 Repository Structure
+# 📁 Repository Structure
 
-```         
-diabetes-readmission/
-├── notebooks/
-│   ├── 01_eda.ipynb              # Data loading, cleaning, EDA
-│   ├── 02_hypothesis_testing.ipynb  # Statistical tests
-│   └── 03_modeling.ipynb         # Logistic regression + decision tree
+```text
+BIFX546_diabetes-indicators/
 ├── data/
-│   └── README_data.md            # Link to UCI source; raw file not included (>50MB)
-├── results/
-│   ├── fig1_readmission_by_age.png
-│   ├── fig2_correlation_heatmap.png
-│   ├── fig3_roc_curve.png
-│   └── table1_model_metrics.csv
+│   ├── diabetes_012_health_indicators_BRFSS2015.csv
+│   ├── diabetes_binary_5050split_health_indicators_BRFSS2015.csv
+│   └── diabetes_binary_health_indicators_BRFSS2015.csv
+├── notebooks/
+│   └── EDA_diabetes_indicators.ipynb
 ├── src/
-│   └── preprocess.py             # Reusable cleaning functions
-├── README.md
-└── requirements.txt
+│   └── .gitkeep
+├── EDA_diabetes_indicators_Final.ipynb
+├── Project Proposal.docx
+├── LICENSE
+└── README.md
 ```
 
-------------------------------------------------------------------------
+---
 
-## ⚙️ How to Run
+# ⚙️ How to Run
 
-### Option 1 — Google Colab (recommended, no install needed)
+## Option 1 — Google Colab
 
-1.  Open [Google Colab](https://colab.research.google.com)
+1. Open Google Colab  
+2. Upload or open the notebook from GitHub  
+3. Install required packages:
 
-2.  Click **File → Open notebook → GitHub**
+```python
+!pip install -r requirements.txt
+```
 
-3.  Paste this repo URL and select the notebook you want to run
+4. Run all notebook cells
 
-4.  Run the first cell to install dependencies:
+---
 
-    ``` python
-    !pip install -r requirements.txt
-    ```
+## Option 2 — Local Jupyter Notebook
 
-5.  Run all cells: **Runtime → Run all**
+```bash
+# Clone repository
+git clone https://github.com/dtn2/diabetes-prediction.git
 
-> **Note:** The dataset is downloaded automatically in the first notebook cell from the UCI URL. No manual download required.
-
-### Option 2 — Local Jupyter
-
-``` bash
-# Clone the repo
-git clone https://github.com/yourteam/diabetes-readmission.git
-cd diabetes-readmission
+cd diabetes-prediction
 
 # Install dependencies
 pip install -r requirements.txt
 
-# Launch Jupyter
+# Launch notebook
 jupyter notebook
 ```
 
-Open notebooks in order: `01_eda.ipynb` → `02_hypothesis_testing.ipynb` → `03_modeling.ipynb`
+---
 
-------------------------------------------------------------------------
+# 📈 Key Results
 
-## 📈 Key Results & Plots
+| Model | Accuracy | Diabetes Recall | ROC-AUC |
+|---|---|---|---|
+| Logistic Regression | 73% | 0.78 | 0.827 |
+| Random Forest | 86% | 0.16 | 0.799 |
+| Logistic Regression + SMOTE | 72% | 0.74 | 0.802 |
+| Reduced Feature Logistic Regression | 72% | 0.76 | 0.813 |
 
-| Figure | File | Description |
-|------------------------|------------------------|------------------------|
-| Fig 1 | `results/fig1_readmission_by_age.png` | Readmission rate by age group (bar chart) |
-| Fig 2 | `results/fig2_correlation_heatmap.png` | Correlation matrix of numeric clinical features |
-| Fig 3 | `results/fig3_roc_curve.png` | ROC curve comparing logistic regression vs. decision tree |
+### Main Findings
 
-**Model performance summary:**
+- General health, BMI, high blood pressure, age, and mobility issues showed the strongest associations with diabetes
+- Logistic Regression outperformed Random Forest for detecting diabetes cases
+- Random Forest achieved higher accuracy but missed many diabetes cases due to class imbalance
+- Duplicate removal and BMI outlier removal had minimal impact on performance
+- SMOTE and undersampling produced only small performance changes
+- A reduced-feature model achieved similar performance using only 6 variables
 
-| Model               | Accuracy | Precision | Recall | AUC-ROC |
-|---------------------|----------|-----------|--------|---------|
-| Logistic Regression | 0.74     | 0.61      | 0.58   | 0.79    |
-| Decision Tree       | 0.70     | 0.57      | 0.62   | 0.74    |
+---
 
-------------------------------------------------------------------------
+# 📝 Conclusion
 
-## 📝 Summary of Findings
+Logistic Regression provided the most effective and interpretable model for diabetes prediction in this imbalanced healthcare dataset. Although Random Forest achieved higher overall accuracy, Logistic Regression achieved substantially higher recall for diabetes cases, making it more clinically useful for screening purposes. The results also demonstrated that a simplified model using only a few key health indicators can still effectively predict diabetes risk.
 
-Our EDA revealed that readmission rates differ substantially across age groups, with patients aged 70–80 showing the highest 30-day readmission rate (\~14%). A chi-square test confirmed a statistically significant association between primary diagnosis category and readmission status (p \< 0.001), and bootstrap confidence intervals placed the overall readmission rate at 11.2% ± 0.4%.
+---
 
-The logistic regression model achieved an AUC-ROC of 0.79, outperforming the decision tree (0.74). The three strongest predictors of readmission were number of inpatient visits in the prior year, number of diagnoses recorded at discharge, and HbA1c result. These findings suggest that care-transition planning — particularly for high-comorbidity patients with prior hospitalizations — may be the highest-yield intervention target. Limitations include the dataset's age (1999–2008) and the exclusion of social determinants of health, which likely confound readmission risk.
+# 📦 Dependencies
 
-------------------------------------------------------------------------
+Core Python packages:
 
-## 📦 Dependencies
-
-See `requirements.txt`. Core packages:
-
-```         
-pandas>=1.5
-numpy>=1.23
-matplotlib>=3.6
-seaborn>=0.12
-scikit-learn>=1.2
-scipy>=1.10
+```text
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+imbalanced-learn
 jupyter
 ```
 
-------------------------------------------------------------------------
+---
 
-## 📜 References
+# 📜 References
 
-1.  Strack, B., DeShazo, J.P., et al. (2014). Impact of HbA1c Measurement on Hospital Readmission Rates: Analysis of 70,000 Clinical Database Patient Records. *BioMed Research International*, Article ID 781670. https://doi.org/10.1155/2014/781670
+1. CDC Behavioral Risk Factor Surveillance System (BRFSS)  
+   https://www.cdc.gov/brfss/
 
-2.  UCI Machine Learning Repository. (2014). Diabetes 130-US Hospitals Dataset. https://archive.ics.uci.edu/dataset/296
+2. Kaggle Diabetes Health Indicators Dataset  
+   https://www.kaggle.com/datasets/alexteboul/diabetes-health-indicators-dataset
 
-3.  Grus, J. (2019). *Data Science from Scratch* (2nd ed.). O'Reilly Media.
+---
 
-------------------------------------------------------------------------
-
-*BIFX-546 · Hood College · Spring 2026 · Dr. Sarangan Ravichandran*
+*BIFX-546 · Hood College · Spring 2026*
