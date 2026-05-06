@@ -5,6 +5,14 @@
 **Student:**  
 Duong Nguyen (dtn2@hood.edu)
 
+**Instructor:** 
+Dr. Sarangan (Ravi) Ravichandran
+
+
+---
+
+
+
 ---
 
 # 🎯 Project Goal
