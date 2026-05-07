@@ -6,7 +6,7 @@
 Duong Nguyen (dtn2@hood.edu)
 
 **Instructor:** 
-Dr. Sarangan (Ravi) Ravichandran
+Dr. Sarangan Ravichandran
 
 
 ---
@@ -64,11 +64,17 @@ BIFX546_diabetes-indicators/
 │   └── diabetes_binary_health_indicators_BRFSS2015.csv
 ├── notebooks/
 │   └── EDA_diabetes_indicators.ipynb
+├── results/
+│   ├── age_distribution_diabetes_status.png
+│   ├── bmi_distribution.png
+│   ├── bmi_vs_diabetes_boxplot.png
+│   ├── correlation_heatmap.png
+│   ├── correlation_with_diabetes_barplot.png
+│   └── diabetes_status_distribution.png
 ├── src/
 │   └── .gitkeep
-├── EDA_diabetes_indicators_Final.ipynb
-├── Project Proposal.docx
 ├── LICENSE
+├── Project Proposal.docx
 └── README.md
 ```
 
@@ -78,32 +84,51 @@ BIFX546_diabetes-indicators/
 
 ## Option 1 — Google Colab
 
-1. Open Google Colab  
-2. Upload or open the notebook from GitHub  
-3. Install required packages:
+1. Open [Google Colab](https://colab.research.google.com)
 
-```python
-!pip install -r requirements.txt
+2. Click **File → Open notebook → GitHub**
+
+3. Paste the repository URL:
+
+```text
+https://github.com/dtn2/BIFX546_diabetes-indicators
 ```
 
-4. Run all notebook cells
+4. Open the notebook:
 
+```text
+EDA_diabetes_indicators.ipynb
+```
+
+5. Run all notebook cells:
+
+```text
+Runtime → Run all
+```
+
+> Required Python packages are installed within the notebook as needed.
 ---
 
 ## Option 2 — Local Jupyter Notebook
 
 ```bash
 # Clone repository
-git clone https://github.com/dtn2/diabetes-prediction.git
+git clone https://github.com/dtn2/BIFX546_diabetes-indicators.git
 
-cd diabetes-prediction
+# Move into repository folder
+cd BIFX546_diabetes-indicators
 
-# Install dependencies
-pip install -r requirements.txt
-
-# Launch notebook
+# Launch Jupyter Notebook
 jupyter notebook
 ```
+
+Open the notebook:
+
+```text
+notebooks/EDA_diabetes_indicators.ipynb
+```
+
+> Install any missing Python packages directly in the notebook if needed.
 
 ---
 
@@ -114,6 +139,7 @@ jupyter notebook
 | Logistic Regression | 73% | 0.78 | 0.827 |
 | Random Forest | 86% | 0.16 | 0.799 |
 | Logistic Regression + SMOTE | 72% | 0.74 | 0.802 |
+| Logistic Regression + Downsampling | 72% | 0.75 | 0.804 |
 | Reduced Feature Logistic Regression | 72% | 0.76 | 0.813 |
 
 ### Main Findings
