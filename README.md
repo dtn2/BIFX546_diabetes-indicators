@@ -116,15 +116,20 @@ Runtime → Run all
 # Clone repository
 git clone https://github.com/dtn2/BIFX546_diabetes-indicators.git
 
-# Move into repo folder
+# Move into repository folder
 cd BIFX546_diabetes-indicators
-
-# Install dependencies
-pip install -r requirements.txt
 
 # Launch Jupyter Notebook
 jupyter notebook
 ```
+
+Open the notebook:
+
+```text
+notebooks/EDA_diabetes_indicators.ipynb
+```
+
+> Install any missing Python packages directly in the notebook if needed.
 
 ---
 
