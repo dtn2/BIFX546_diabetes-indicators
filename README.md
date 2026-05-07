@@ -64,11 +64,18 @@ BIFX546_diabetes-indicators/
 │   └── diabetes_binary_health_indicators_BRFSS2015.csv
 ├── notebooks/
 │   └── EDA_diabetes_indicators.ipynb
+├── results/
+│   ├── GenHlth_distribution_diabetes_status.png
+│   ├── age_distribution_diabetes_status.png
+│   ├── bmi_distribution.png
+│   ├── bmi_vs_diabetes_boxplot.png
+│   ├── correlation_heatmap.png
+│   ├── correlation_with_diabetes_barplot.png
+│   └── diabetes_status_distribution.png
 ├── src/
 │   └── .gitkeep
-├── EDA_diabetes_indicators_Final.ipynb
-├── Project Proposal.docx
 ├── LICENSE
+├── Project Proposal.docx
 └── README.md
 ```
 
