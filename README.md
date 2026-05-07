@@ -65,7 +65,6 @@ BIFX546_diabetes-indicators/
 ├── notebooks/
 │   └── EDA_diabetes_indicators.ipynb
 ├── results/
-│   ├── GenHlth_distribution_diabetes_status.png
 │   ├── age_distribution_diabetes_status.png
 │   ├── bmi_distribution.png
 │   ├── bmi_vs_diabetes_boxplot.png
